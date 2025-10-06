@@ -1,12 +1,15 @@
 import express from "express";
 import dotenv from "dotenv"
+import { connectDB } from "./lib/db.js";
 
+//route imports
 import userRoute from './routes/user.route.js'
 import adminRoute from './routes/admin.route.js'
 import albumRoute from './routes/album.route.js'
 import authRoute from './routes/auth.route.js'
 import songRoute from './routes/song.route.js'
 import statRoute from './routes/stat.route.js'
+
 
 
 dotenv.config() 
@@ -24,4 +27,5 @@ app.use("/api/stat", statRoute)
 
 app.listen(port, () => {
     console.log("Server running on port "+ port);
+    connectDB()
 })
